@@ -1,8 +1,14 @@
-# HardHat has problems with node 20
+# HardHat has problems with node 20 so we use an older version of node
 NODE_ALPINE = "node:14.21.3-alpine"
 HARDHAT_PROJECT_DIR = "/tmp/hardhat/"
 HARDHAT_SERVICE_NAME = "hardhat"
 
+
+# creates a container with Node JS and installs the required depenencies of the hardhat project passed
+# plan - is the Kurtosis plan
+# hardhat_project_url - a Kurtosis locator to a directory containing the hardhat files (with hardhat.config.ts at the root of the dir)
+# env_vars - Optional argument to set some environment variables in the container; can use this to set the RPC_URI as an example
+# returns - hardhat_service; a Kurtosis Service object containing .name, .ip_address, .hostname & .ports
 def init(plan, hardhat_project_url, env_vars = None):
     hardhat_project = plan.upload_files(hardhat_project_url)
 
@@ -28,6 +34,10 @@ def init(plan, hardhat_project_url, env_vars = None):
     return hardhat_service
 
 
+# runs npx hardhat test with the given contract
+# plan - is the Kurtosis plan
+# smart_contract - the path to smart_contract relative to the hardhat_project passed to `init`
+# network - the network to run npx hardhat run against; defaults to local
 def test(plan, smart_contract, network = "local"):
     command_arr = ["cd", HARDHAT_PROJECT_DIR, "&&", "npx", "hardhat", "test", smart_contract, "--network", network]
     return plan.exec(
@@ -39,6 +49,7 @@ def test(plan, smart_contract, network = "local"):
 
 
 # runs npx hardhat compile with the given smart contract
+# plan is the Kurtosis plan
 def compile(plan):
     command_arr = ["cd", HARDHAT_PROJECT_DIR, "&&", "npx", "hardhat", "compile"]
     return plan.exec(
@@ -50,6 +61,9 @@ def compile(plan):
 
 
 # runs npx hardhat run with the given contract
+# plan - is the Kurtosis plan
+# smart_contract - the path to smart_contract relative to the hardhat_project passed to `init`
+# network - the network to run npx hardhat run against; defaults to local
 def run(plan, smart_contract, network = "local"):
     command_arr = ["cd", HARDHAT_PROJECT_DIR, "&&", "npx", "hardhat", "run", smart_contract, "--network", network]
     return plan.exec(
@@ -59,7 +73,10 @@ def run(plan, smart_contract, network = "local"):
         )
     )
 
-
+# runs npx hardhat run with the given contract
+# plan - is the Kurtosis plan
+# task_name - the taskname to run
+# network - the network to run npx hardhat run against; defaults to local
 def task(plan, task_name, network = "local"):
     command_arr = ["cd", HARDHAT_PROJECT_DIR, "&&", "npx", "hardhat", task_name, "--network", network]
     return plan.exec(
@@ -69,6 +86,6 @@ def task(plan, task_name, network = "local"):
         )
     )
 
-
+# destroys the hardhat container; running this is optional
 def cleanup(plan):
     plan.remove_service(HARDHAT_SERVICE_NAME)
