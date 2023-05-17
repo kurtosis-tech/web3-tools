@@ -16,4 +16,4 @@ def run(plan, args):
     hardhat_module.task(plan, "balances", "localnet")
     hardhat_module.compile(plan)
     hardhat_module.run(plan, "scripts/deploy.ts", "localnet")
-    #hardhat_module.cleanup(plan)
+    hardhat_module.cleanup(plan)
