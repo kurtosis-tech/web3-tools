@@ -4,7 +4,7 @@ HARDHAT_PROJECT_DIR = "/tmp/hardhat/"
 HARDHAT_SERVICE_NAME = "hardhat"
 
 def init(plan, hardhat_project_url, env_vars = None):
-    harhdat_project = plan.upload_files(hardhat_project_url)
+    hardhat_project = plan.upload_files(hardhat_project_url)
 
     hardhat_service = plan.add_service(
         name = "hardhat",
@@ -12,7 +12,7 @@ def init(plan, hardhat_project_url, env_vars = None):
             image = NODE_ALPINE,
             entrypoint = ["sleep", "999999"],
             files = {
-                HARDHAT_PROJECT_DIR : harhdat_project
+                HARDHAT_PROJECT_DIR : hardhat_project
             },
             env_vars = env_vars,
         )
