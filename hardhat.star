@@ -36,10 +36,12 @@ def init(plan, hardhat_project_url, env_vars = None):
 
 # runs npx hardhat test with the given contract
 # plan - is the Kurtosis plan
-# smart_contract - the path to smart_contract relative to the hardhat_project passed to `init`
+# smart_contract - the path to smart_contract relative to the hardhat_project passed to `init`; if you pass nothing it runs all suites via npx hardhat test
 # network - the network to run npx hardhat run against; defaults to local
-def test(plan, smart_contract, network = "local"):
-    command_arr = ["cd", HARDHAT_PROJECT_DIR, "&&", "npx", "hardhat", "test", smart_contract, "--network", network]
+def test(plan, smart_contract = None, network = "local"):
+    command_arr = ["cd", HARDHAT_PROJECT_DIR, "&&", "npx", "hardhat", "test", "--network", network]
+    if smart_contract:
+        command_arr = ["cd", HARDHAT_PROJECT_DIR, "&&", "npx", "hardhat", "test", smart_contract, "--network", network]
     return plan.exec(
         service_name = HARDHAT_SERVICE_NAME,
         recipe = ExecRecipe(
