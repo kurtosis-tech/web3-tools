@@ -4,6 +4,12 @@ This repository contains tools in Starlark that we have seen people need in the 
 
 The `main.star` in the repository is just a dummy `main.star` to show case the tools
 
+### Run Instructions
+
+```bash
+kurtosis run github.com/kurtosis-tech/web3-tools
+```
+
 ### Hardhat
 
 You can use `hardhat.star` in  your own Starlark pacakge as follows
