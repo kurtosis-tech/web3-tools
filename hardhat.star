@@ -1,5 +1,5 @@
 # HardHat has problems with node 20 so we use an older version of node
-NODE_ALPINE = "node:14.21.3-alpine"
+NODE_ALPINE = "ubuntu:latest"
 HARDHAT_PROJECT_DIR = "/tmp/hardhat/"
 HARDHAT_SERVICE_NAME = "hardhat"
 
