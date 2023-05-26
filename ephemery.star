@@ -1,4 +1,4 @@
-NODE_ALPINE = "node:latest"
+NODE_ALPINE = "amd64/node"
 ROOT_DIR = "/tmp/ephemery"
 EPHEMERY_PROJECT_DIR = ROOT_DIR + "/" + "ephemery-base-contracts"
 EPHEMERY_SERVICE_NAME = "ephemery"
