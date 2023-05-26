@@ -12,7 +12,7 @@ kurtosis run github.com/kurtosis-tech/web3-tools
 
 ### Ephemery
 
-You can use `ephemery.star` in your won Stalrark Package as follows
+You can use `ephemery.star` in your own Starlark Package as follows
 
 ```py
 #  this is a workaround while we enable "--rpc.allow-unprotected-txs" in geth
