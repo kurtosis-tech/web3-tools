@@ -39,12 +39,6 @@ def run_ephemery_example(plan, rpc_url):
     ephemery.deploy(plan, EPHEMERY_TESTING_PRIVATE_KEY, rpc_url, "_manager")
 ```
 
-Note if you are on an M1/M2 - ephemery requires you run on an `amd64` container we recommend you force Docker to use amd64 node by running the following beforehand -
-
-```
-docker pull --platform linux/amd64 smartcontract/chainlink:1.13.1
-```
-
 ### Hardhat
 
 You can use `hardhat.star` in  your own Starlark pacakge as follows
