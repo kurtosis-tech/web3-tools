@@ -47,7 +47,7 @@ def deploy(plan, private_key, rpc_url, project_name):
     plan.exec(
         service_name = EPHEMERY_SERVICE_NAME,
         recipe = ExecRecipe(
-            command = ["/bin/sh", "-c", "cd {0} && bin/deployer -p {1} -r {2} deploy {3}".format(EPHEMERY_PROJECT_DIR, private_key, rpc_url, [project_name])]
+            command = ["/bin/sh", "-c", "cd {0} && bin/deployer -p {1} -r {2} deploy {3}".format(EPHEMERY_PROJECT_DIR, private_key, rpc_url, project_name)]
         ),
     )
 
