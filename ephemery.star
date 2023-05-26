@@ -4,6 +4,7 @@ EPHEMERY_PROJECT_DIR = ROOT_DIR + "/" + "ephemery-base-contracts"
 EPHEMERY_SERVICE_NAME = "ephemery"
 BASE_CONTRACTS = "https://github.com/pk910/ephemery-base-contracts.git"
 
+# Creates an ephemery container with everything installed
 def init(plan):
     plan.add_service(
         name = EPHEMERY_SERVICE_NAME,
@@ -43,6 +44,9 @@ def init(plan):
     )
 
 
+# private_key - the private key of the account that will be deploying smart contracts
+# rpc_url - rpc url of the given node
+# project_name - name of the project to deploy
 def deploy(plan, private_key, rpc_url, project_name):
     plan.exec(
         service_name = EPHEMERY_SERVICE_NAME,
@@ -51,6 +55,6 @@ def deploy(plan, private_key, rpc_url, project_name):
         ),
     )
 
-
+# cleans up the container
 def destroy(plan):
     plan.remove_service(EPHEMERY_SERVICE_NAME)
