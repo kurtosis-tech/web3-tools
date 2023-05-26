@@ -92,3 +92,7 @@ def run(plan, args):
     # this just removes the started container
     hardhat_module.cleanup(plan)
 ```
+
+### Examples
+
+We recommend you look at the most recent CI run on main to see the above examples in `main.star` in action
