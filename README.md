@@ -1,6 +1,6 @@
 # Web3-Tools
 
-This repository contains tools in Starlark that we have seen people need in the Web3 community like `hardhat.star`
+This repository contains tools in Starlark that we have seen people need in the Web3 community like hardhat and ephemery
 
 The `main.star` in the repository is just a dummy `main.star` to show case the tools
 
