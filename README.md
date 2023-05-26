@@ -41,7 +41,7 @@ def run_ephemery_example(plan, rpc_url):
 
 ### Hardhat
 
-You can use `hardhat.star` in  your own Starlark pacakge as follows
+You can use `hardhat.star` in  your own Starlark package as follows:
 
 ```py
 eth_network_package = import_module("github.com/kurtosis-tech/eth-network-package/main.star")
