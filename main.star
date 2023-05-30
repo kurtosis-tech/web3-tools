@@ -3,6 +3,7 @@
 eth_network_package = import_module("github.com/kurtosis-tech/eth-network-package/main.star")
 hardhat_module = import_module("github.com/kurtosis-tech/web3-tools/hardhat.star")
 ephemery = import_module("github.com/kurtosis-tech/web3-tools/ephemery.star")
+archway = import_module("github.com/kurtosis-tech/web3-tools/archway.star")
 
 # This can be any prefunded acocunt here if you are running this against the eth-network-package
 # https://github.com/kurtosis-tech/eth-network-package/blob/main/src/prelaunch_data_generator/genesis_constants/genesis_constants.star#L13
@@ -15,9 +16,8 @@ def run(plan, args):
     el_client_rpc_port = participants[0].el_client_context.rpc_port_num
     rpc_url = "http://{0}:{1}".format(el_client_rpc_ip_addr, el_client_rpc_port)
 
-    run_ephemery_example(plan, rpc_url)
-    run_hardhat_example(plan, rpc_url)
-
+    archway.init(plan, "github.com/kurtosis-tech/web3-tools/wasms", "http://this-node-doesnt.exist")
+    archway.run(plan, "wasms/foo.wasm")
 
 def run_hardhat_example(plan, rpc_url):
     hardhat_env_vars = {
