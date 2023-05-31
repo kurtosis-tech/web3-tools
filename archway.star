@@ -34,7 +34,7 @@ def run(plan, contract):
     plan.exec(
         name = ARCHWAY_SERVICE,
         recipe = ExecRecipe(
-            command = ["archwayd", "tx", "wasm", "store", "{0}{1}".format(path), "--from", "mywallet", "--node", "$RPC_URL", "--chain-id", "constantine-3"]
+            command = ["archwayd", "tx", "wasm", "store", "{0}{1}".format(contract), "--from", "mywallet", "--node", "$RPC_URL", "--chain-id", "constantine-3"]
         )
     )
     

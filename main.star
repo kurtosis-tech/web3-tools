@@ -32,6 +32,7 @@ def run_hardhat_example(plan, rpc_url):
     hardhat_module.run(plan, "scripts/deploy.ts", "localnet")
     hardhat_module.cleanup(plan)
 
+
 def run_ephemery_example(plan, rpc_url):
     ephemery.init(plan)
     ephemery.deploy(plan, EPHEMERY_TESTING_PRIVATE_KEY, rpc_url, "_manager")
