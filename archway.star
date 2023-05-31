@@ -8,7 +8,7 @@ ARCHWAY_SERVICE = "archway"
 def init(plan, wasm_artifact_locator, node_rpc_url):
     wasm = plan.upload_files(wasm_artifact_locator)
 
-    hardhat_service = plan.add_service(
+    archway_service = plan.add_service(
         name = ARCHWAY_SERVICE,
         config = ServiceConfig(
             image = ARCHWAY,
