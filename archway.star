@@ -1,4 +1,4 @@
-NODE64 = "amd64/node"
+ARCHWAY = "archwaynetwork/archwayd"
 ARCHWAY_DIR = "/tmp/archway/"
 ARCHWAY_SERVICE = "archway"
 
@@ -11,7 +11,7 @@ def init(plan, wasm_artifact_locator, node_rpc_url):
     hardhat_service = plan.add_service(
         name = ARCHWAY_SERVICE,
         config = ServiceConfig(
-            image = NODE64,
+            image = ARCHWAY,
             entrypoint = ["sleep", "999999"],
             files = {
                 ARCHWAY_DIR : wasm
@@ -22,17 +22,10 @@ def init(plan, wasm_artifact_locator, node_rpc_url):
         )
     )
 
-    plan.exec(
-        service_name = ARCHWAY_SERVICE,
-        recipe = ExecRecipe(
-            command = ["/bin/sh", "-c", "npm install -g @archwayhq/cli"]
-        )
-    )
-
 
 def store(plan, contract):
     plan.exec(
-        name = ARCHWAY_SERVICE,
+        service_name = ARCHWAY_SERVICE,
         recipe = ExecRecipe(
             command = ["archwayd", "tx", "wasm", "store", "{0}{1}".format(ARCHWAY_DIR, contract), "--from", "mywallet", "--node", "$RPC_URL", "--chain-id", "constantine-3"]
         )
