@@ -30,11 +30,11 @@ def init(plan, wasm_artifact_locator, node_rpc_url):
     )
 
 
-def run(plan, contract):
+def store(plan, contract):
     plan.exec(
         name = ARCHWAY_SERVICE,
         recipe = ExecRecipe(
-            command = ["archwayd", "tx", "wasm", "store", "{0}{1}".format(contract), "--from", "mywallet", "--node", "$RPC_URL", "--chain-id", "constantine-3"]
+            command = ["archwayd", "tx", "wasm", "store", "{0}{1}".format(ARCHWAY_DIR, contract), "--from", "mywallet", "--node", "$RPC_URL", "--chain-id", "constantine-3"]
         )
     )
     

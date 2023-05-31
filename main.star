@@ -17,7 +17,7 @@ def run(plan, args):
     rpc_url = "http://{0}:{1}".format(el_client_rpc_ip_addr, el_client_rpc_port)
 
     archway.init(plan, "github.com/kurtosis-tech/web3-tools/wasms", "http://this-node-doesnt.exist")
-    archway.run(plan, "wasms/foo.wasm")
+    archway.store(plan, "wasms/foo.wasm")
 
 def run_hardhat_example(plan, rpc_url):
     hardhat_env_vars = {
