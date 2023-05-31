@@ -13,4 +13,4 @@ EPHEMERY_TESTING_PRIVATE_KEY = "ef5177cd0b6b21c87db5a0bf35d4084a8a57a9d6a064f86d
 def run(plan, args):
 
     archway.init(plan, "github.com/kurtosis-tech/web3-tools/wasms", "http://this-node-doesnt.exist")
-    archway.store(plan, "wasms/foo.wasm")
+    archway.store(plan, "foo.wasm")
