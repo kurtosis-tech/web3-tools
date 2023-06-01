@@ -92,7 +92,10 @@ You can also use Kurtosis to deploy a Rust smart contract.
 The example below uses [`archway.star`](https://github.com/kurtosis-tech/web3-tools/blob/gyani/archway/archway.star) to deploy a smart contract to the Archway blockchain. Simply replace the contents of your `main.star` file with the following once you have compiled down your smart contract into a Wasm binary:
 ```py
 def run(plan, args):
-    archway.init(plan, "github.com/kurtosis-tech/web3-tools/wasms", "http://this-node-doesnt.exist")	    
+    # This initializes a container and mounts the Wasm binary on to it.
+    archway.init(plan, "github.com/kurtosis-tech/web3-tools/wasms", "http://this-node-doesnt.exist")
+    
+    # Deploys it to an RPC endpoint on the Archway blockchain
     archway.store(plan, "wasms/foo.wasm")
 ```
 ### Examples
