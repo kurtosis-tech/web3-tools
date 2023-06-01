@@ -86,7 +86,16 @@ def run(plan, args):
     # this just removes the started container
     hardhat_module.cleanup(plan)
 ```
+### Deploying a Rust smart contract
+You can also use Kurtosis to deploy a Rust smart contract. 
 
+The example below uses [`archway.star`](https://github.com/kurtosis-tech/web3-tools/blob/gyani/archway/archway.star) to deploy a smart contract to the Archway blockchain. Simply replace the contents of your `main.star` file with the following once you have compiled down your smart contract into a Wasm binary:
+```
+def run(plan, args):
+
+    archway.init(plan, "github.com/kurtosis-tech/web3-tools/wasms", "http://this-node-doesnt.exist")	    archway.init(plan, "github.com/kurtosis-tech/web3-tools/wasms", "http://this-node-doesnt.exist")
+    archway.store(plan, "wasms/foo.wasm")	    archway.store(plan, "foo.wasm")
+```
 ### Examples
 
 We recommend you look at the most recent CI run on main to see the above examples in `main.star` in action
