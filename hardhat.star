@@ -9,17 +9,22 @@ HARDHAT_SERVICE_NAME = "hardhat"
 # hardhat_project_url - a Kurtosis locator to a directory containing the hardhat files (with hardhat.config.ts at the root of the dir)
 # env_vars - Optional argument to set some environment variables in the container; can use this to set the RPC_URI as an example
 # returns - hardhat_service; a Kurtosis Service object containing .name, .ip_address, .hostname & .ports
-def init(plan, hardhat_project_url, env_vars = None):
+def init(plan, hardhat_project_url, env_vars = None, more_files = {}):
     hardhat_project = plan.upload_files(hardhat_project_url)
+
+    files = {
+        HARDHAT_PROJECT_DIR: hardhat_project,
+    }
+
+    for filepath, file_artifact in more_files.items():
+        files[filepath] = file_artifact
 
     hardhat_service = plan.add_service(
         name = "hardhat",
         config = ServiceConfig(
             image = NODE_ALPINE,
             entrypoint = ["sleep", "999999"],
-            files = {
-                HARDHAT_PROJECT_DIR : hardhat_project
-            },
+            files = files,
             env_vars = env_vars,
         )
     )
