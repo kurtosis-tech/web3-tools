@@ -1,9 +1,9 @@
 #  this is a workaround while we enable "--rpc.allow-unprotected-txs" in geth
 #  the block time is also much faster on this branch
 eth_network_package = import_module("github.com/kurtosis-tech/eth-network-package/main.star")
-hardhat_module = import_module("/hardhat.star")
-ephemery = import_module("/ephemery.star")
-archway = import_module("/archway.star")
+hardhat_module = import_module("./hardhat.star")
+ephemery = import_module("./ephemery.star")
+archway = import_module("./archway.star")
 
 # This can be any prefunded acocunt here if you are running this against the eth-network-package
 # https://github.com/kurtosis-tech/eth-network-package/blob/main/src/prelaunch_data_generator/genesis_constants/genesis_constants.star#L13
@@ -23,7 +23,7 @@ def run_hardhat_example(plan, rpc_url):
         "RPC_URI": rpc_url
     }
 
-    hardhat_project = "/smart-contract-example"
+    hardhat_project = "./smart-contract-example"
     hardhat = hardhat_module.init(plan, hardhat_project, hardhat_env_vars)
     
     hardhat_module.task(plan, "balances", "localnet")
